@@ -1,4 +1,4 @@
-const { startWebServer } = require('./server');
+import { startWebServer } from "./server";
 
 const start = async () => {
   await startWebServer();
@@ -6,7 +6,7 @@ const start = async () => {
 
 start()
   .then(() => {
-    console.log('Done');
+    console.log("Done");
   })
   .catch((error) => {
     console.error(error);

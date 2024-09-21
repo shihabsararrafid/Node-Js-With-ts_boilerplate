@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)",
   "main": "index.js",
+  "type": "commonjs",
   "directories": {
     "doc": "docs",
     "test": "test"
@@ -10,13 +11,23 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --verbose",
-    "start": "nodemon src/start.js",
-    "create-domain": "zx scripts/dev/domain-generator.js"
+    "start": "nodemon src/start.ts",
+    "create-domain": "zx scripts/dev/domain-generator.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/start.ts",
+    "build": "tsc",
+    "prepare": "husky install",
+    "genKey": "ts-node src/utils/genKeyPair.ts",
+    "generate": "prisma generate",
+    "format": "prisma format",
+    "migrate-dev": "prisma migrate dev",
+    "dbPush": "prisma db push"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "@types/express": "^4.17.21",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -29,6 +40,7 @@
     "mongoose": "^8.3.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.0",
+    "ts-node-dev": "^2.0.0",
     "ulid": "^2.3.0",
     "winston": "^3.13.0",
     "winston-daily-rotate-file": "^5.0.0"
@@ -36,6 +48,7 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "mongodb-memory-server": "^9.1.8",
+    "prisma": "^5.19.1",
     "supertest": "^6.3.4",
     "zx": "^8.0.1"
   }
